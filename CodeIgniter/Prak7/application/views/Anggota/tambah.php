@@ -137,12 +137,14 @@ input[type=number] {
                         <div class="row">
                             <div class="col-5">
                             <?= form_label('Kelas', 'kelas') ?>
-                            <?= form_dropdown('kelas', [
-                                '' => '',
-                                'mipa' => "Matematika dan Ilmu Pengetahuan Alam",
-                                'sosial' => "Sosial",
-                                'bahasa' => "Bahasa"
-                            ], set_value('kelas'), 'class="form-control " id="kelas"') ?>
+                            <?php 
+                                foreach ($kelas as $row) {
+                                    $options[$row['id_kelas']] = $row['nama_kelas'];
+                                }
+                                $newoptions = array(null => 'Pilih kelas...') + $options;
+
+                                echo form_dropdown('kelas', $newoptions, set_value('kelas'), 'class="form-control " id="kelas"')
+                            ?>
                             <small class="form-text text-danger">
                                 <?= form_error('kelas') ?>
                             </small>

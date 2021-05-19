@@ -139,15 +139,13 @@ input[type=number] {
                         <div class="row">
                             <div class="col-5">
                             <?= form_label('Kelas', 'kelas') ?>
-                            <?= form_dropdown('kelas', [
-                                '' => '',
-                                'mipa' => "Matematika dan Ilmu Pengetahuan Alam",
-                                'sosial' => "Sosial",
-                                'bahasa' => "Bahasa"
-                            ], $anggota['kelas'], 'class="form-control " id="kelas"') ?>
-                            <small class="form-text text-danger">
-                                <?= form_error('kelas') ?>
-                            </small>
+                            <?php 
+                                foreach ($kelas as $row) {
+                                    $options[$row['id_kelas']] = $row['nama_kelas'];
+                                }
+
+                                echo form_dropdown('kelas', $options, $anggota['kelas'], 'class="form-control " id="kelas"');
+                            ?>
                             </div>
                         </div>
                    

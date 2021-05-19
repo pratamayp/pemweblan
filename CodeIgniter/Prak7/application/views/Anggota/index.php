@@ -30,7 +30,7 @@
                 <td><?= $row['gender'] ?></td>
                 <td><?= $row['no_hp'] ?></td>
                 <td><?= $row['email'] ?></td>
-                <td><?= $row['kelas'] ?></td>
+                <td><?= $row['nama_kelas'] ?></td>
                 <td><?= $row['alamat'] ?></td>
                 <td>
                     <a href="<?= base_url() ?>anggota/edit/<?= $row['id'] ?>" class="badge badge-pill badge-warning">

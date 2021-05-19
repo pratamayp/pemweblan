@@ -8,14 +8,15 @@ class Anggota extends CI_Controller{
         $this->load->helper(['form', 'url']);
         $this->load->library('form_validation');
         $this->load->database();
-        $this->load->model('AnggotaModel');
+        $this->load->model(['AnggotaModel', 'KelasModel']);
     }
 
     public function index()
     {
         $data['tab_title'] = "Halaman Admin";
         $data['title'] = "Data Anggota Perpustakaan";
-        $data['anggota'] = $this->AnggotaModel->getAllData();
+        // $data['anggota'] = $this->AnggotaModel->getAllData();
+        $data['anggota'] = $this->AnggotaModel->getAllJoinedData();
 
         $this->load->view('templates/header', $data);
         $this->load->view('anggota/index', $data);
@@ -37,9 +38,10 @@ class Anggota extends CI_Controller{
         if ($this->form_validation->run() == FALSE){
             $data['tab_title'] = "Registrasi";
             $data['title'] = "Form Registrasi Anggota";
+            $data['kelas'] = $this->KelasModel->getAllData();
             
             $this->load->view('templates/header', $data);
-            $this->load->view('anggota/tambah');
+            $this->load->view('anggota/tambah', $data);
             $this->load->view('templates/footer');
         }else{
             //data diambil di model
@@ -74,6 +76,7 @@ class Anggota extends CI_Controller{
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
         if ($this->form_validation->run() == FALSE){
+            $data['kelas'] = $this->KelasModel->getAllData();
             
             $this->load->view('templates/header', $data);
             $this->load->view('anggota/edit', $data);

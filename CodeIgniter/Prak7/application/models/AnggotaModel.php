@@ -12,6 +12,16 @@ class AnggotaModel extends CI_Model{
         return $query->result_array();
     }
 
+    public function getAllJoinedData()
+    {
+        $this->db->select('*');
+        $this->db->from('anggota_ci');
+        $this->db->join('kelas_ci', 'anggota_ci.kelas = kelas_ci.id_kelas');
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
     public function insertData()
     {
         $data = [

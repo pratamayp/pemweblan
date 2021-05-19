@@ -16,7 +16,7 @@ $('.tombol-hapus').on('click', function(event){
 
     Swal.fire({
         title: 'Hapus Data?',
-        text: "",
+        text: "Data yang dihapus tidak bisa direstore",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
