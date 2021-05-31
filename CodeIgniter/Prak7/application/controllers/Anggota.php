@@ -51,6 +51,17 @@ class Anggota extends CI_Controller{
         }
     }
 
+    public function detail($id)
+    {
+        $data['tab_title'] = 'Detail';
+        $data['judul'] = 'Detail Data Anggota';
+        $data['anggota'] = $this->AnggotaModel->getDataById($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('anggota/detail', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function hapus($id)
     {
         // $data = $this->AnggotaModel->getDataById($id);

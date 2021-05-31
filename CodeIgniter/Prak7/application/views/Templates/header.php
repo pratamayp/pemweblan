@@ -29,6 +29,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url() ?>anggota">Anggota</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url() ?>peoples">Random Peoples</a>
+                </li>
             </ul>
             <ul class="navbar-nav">
                 <li class="nav-item">
