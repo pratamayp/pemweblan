@@ -4,20 +4,23 @@ class Anggota extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
+
+        if(!$this->session->userdata('email')){
+            redirect('auth');
+        }
         
-        $this->load->helper(['form', 'url']);
         $this->load->library('form_validation');
-        $this->load->database();
         $this->load->model(['AnggotaModel', 'KelasModel']);
     }
 
     public function index()
     {
+        
         $data['tab_title'] = "Halaman Admin";
         $data['title'] = "Data Anggota Perpustakaan";
         // $data['anggota'] = $this->AnggotaModel->getAllData();
         $data['anggota'] = $this->AnggotaModel->getAllJoinedData();
-
+        
         $this->load->view('templates/header', $data);
         $this->load->view('anggota/index', $data);
         $this->load->view('templates/footer');
