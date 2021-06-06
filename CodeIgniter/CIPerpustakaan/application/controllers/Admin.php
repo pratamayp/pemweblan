@@ -1,5 +1,6 @@
 <?php
-class Anggota extends CI_Controller{
+
+class Admin extends CI_Controller{
 
     public function __construct()
     {
@@ -15,14 +16,25 @@ class Anggota extends CI_Controller{
 
     public function index()
     {
-        
+        $data['tab_title'] = "Halaman Admin";
+        $data['user'] = $this->session->userdata['name'];
+
+        $data['total_anggota'] = $this->AnggotaModel->countAllAnggota();
+        $data['total_kelas'] = $this->KelasModel->countKelas();
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function anggota()
+    {
         $data['tab_title'] = "Halaman Admin";
         $data['title'] = "Data Anggota Perpustakaan";
         // $data['anggota'] = $this->AnggotaModel->getAllData();
         $data['anggota'] = $this->AnggotaModel->getAllJoinedData();
         
         $this->load->view('templates/header', $data);
-        $this->load->view('anggota/index', $data);
+        $this->load->view('admin/anggota', $data);
         $this->load->view('templates/footer');
     }
 
@@ -44,13 +56,13 @@ class Anggota extends CI_Controller{
             $data['kelas'] = $this->KelasModel->getAllData();
             
             $this->load->view('templates/header', $data);
-            $this->load->view('anggota/tambah', $data);
+            $this->load->view('admin/tambah', $data);
             $this->load->view('templates/footer');
         }else{
             //data diambil di model
             $data['anggota'] = $this->AnggotaModel->insertData();
             $this->session->set_flashdata('flash', 'Ditambahkan');
-            redirect('anggota');
+            redirect('admin/anggota');
         }
     }
 
@@ -61,7 +73,7 @@ class Anggota extends CI_Controller{
         $data['anggota'] = $this->AnggotaModel->getDataById($id);
 
         $this->load->view('templates/header', $data);
-        $this->load->view('anggota/detail', $data);
+        $this->load->view('admin/detail', $data);
         $this->load->view('templates/footer');
     }
 
@@ -70,7 +82,7 @@ class Anggota extends CI_Controller{
         // $data = $this->AnggotaModel->getDataById($id);
         $this->AnggotaModel->deleteDate($id);
         $this->session->set_flashdata('flash', 'Dihapus');
-        redirect('anggota'); 
+        redirect('admin/anggota'); 
     }
 
     public function edit($id)
@@ -93,15 +105,40 @@ class Anggota extends CI_Controller{
             $data['kelas'] = $this->KelasModel->getAllData();
             
             $this->load->view('templates/header', $data);
-            $this->load->view('anggota/edit', $data);
+            $this->load->view('admin/edit', $data);
             $this->load->view('templates/footer');
 
         }else{
 
             $this->AnggotaModel->editData();
             $this->session->set_flashdata('flash', 'Diubah');
-            redirect('anggota');
+            redirect('admin/anggota');
             
         }
+        
+    }
+
+    public function kelas()
+    {
+        $data['tab_title'] = 'Halaman Admin';
+        $data['title'] = 'Data Kelas';
+        $data['kelas'] = $this->KelasModel->getAllData();
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('admin/kelas', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('role_id');
+
+        $this->session->set_flashdata('message','
+            <div class="alert alert-success" role="alert">
+                Berhasil logout.
+            </div>');
+
+        redirect('auth');
     }
 }

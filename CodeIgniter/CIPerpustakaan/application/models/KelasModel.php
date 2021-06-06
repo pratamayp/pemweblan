@@ -9,4 +9,9 @@ class KelasModel extends CI_Model{
         return $query->result_array();
     }
 
+    public function countKelas()
+    {
+        return $this->db->get('kelas_ci')->num_rows();
+    }
+
 }

@@ -41,7 +41,8 @@
                                 <!-- <a class="small" href="forgot-password.html">Lupa Password?</a> -->
                             </div>
                             <div class="text-center">
-                                <a class="small" href="<?= base_url() ?>auth">Sudah mempunyai akun? Login!</a>
+                                <small>Sudah memiliki akun? </small>
+                                <a class="small" href="<?= base_url() ?>auth"> Login!</a>
                             </div>
                         </div>
                     </div>

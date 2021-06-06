@@ -68,4 +68,9 @@ class AnggotaModel extends CI_Model{
         $this->db->where('id', $id);
         $this->db->update('anggota_ci', $data);
     }
+
+    public function countAllAnggota()
+    {
+        return $this->db->get('anggota_ci')->num_rows();
+    }
 }
