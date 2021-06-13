@@ -12,47 +12,43 @@
                             <div class="col-lg">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Halaman Login</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">
+                                            <i class="fas fa-book-reader fa-4x text-primary"></i> <br>
+                                            <small>AFK LIBRARY</small>
+                                        </h1>
                                     </div>
 
                                     <?= $this->session->flashdata('message') ?>
 
                                     <form class="user" method="POST" action="<?= base_url() ?>auth">
                                         <div class="form-group">
-                                            <input type="text" class="form-control form-control-user"
-                                                id="email" name="email" aria-describedby="emailHelp"
-                                                placeholder="Masukkan email . . ." value="<?= set_value('email') ?>">
+                                            <input type="text" class="form-control form-control-user" id="email"
+                                                name="email" aria-describedby="emailHelp"
+                                                placeholder="Email" value="<?= set_value('email') ?>">
                                             <?= form_error('email', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
+
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="password" name="password" placeholder="Password">
+                                            <input type="password" class="form-control form-control-user" id="password"
+                                                name="password" placeholder="Password">
                                             <?= form_error('password', '<small class="text-danger pl-3">', '</small>') ?>
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
-                                            </div>
-                                        </div> -->
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+
+                                        <button type="submit" class="btn btn-primary btn-user btn-block warna">
                                             Login
                                         </button>
                                         <hr>
-                                        <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a> -->
+
                                     </form>
                                     <!-- <hr> -->
                                     <div class="text-center">
-                                        <!-- <a class="small" href="forgot-password.html">Lupa Password?</a> -->
-                                    </div> 
+                                        <a class="small" href="<?= base_url() ?>auth/forgot">Lupa Password?</a>
+                                    </div>
                                     <div class="text-center">
-                                        <a class="small" href="<?= base_url() ?>auth/registration">Buat Akun!</a>
+                                        <small>Belum memiliki akun? </small>
+                                        <a class="small" href="<?= base_url() ?>auth/registration">
+                                            Buat Akun!
+                                        </a>
                                     </div>
                                 </div>
                             </div>

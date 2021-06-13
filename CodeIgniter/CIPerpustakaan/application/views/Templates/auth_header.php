@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title><?= $tab_title ?></title>
-    
+
     <!-- Custom fonts for this template-->
     <link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -22,4 +22,19 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<style>
+a:link {
+    text-decoration: none;
+}
+
+body {
+    background-image: url("<?= base_url() ?>assets/img/bg.jpg");
+    /* Image by Ryunosuke Kikuno from Unsplash */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+</style>
+
+<body>

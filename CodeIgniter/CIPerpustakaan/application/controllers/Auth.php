@@ -123,4 +123,14 @@ class Auth extends CI_Controller{
             redirect('auth');
         }
     }
+
+    public function forgot()
+    {
+        $data['tab_title'] = 'Forgot Password';
+
+        $this->load->view('templates/auth_header', $data);
+        $this->load->view('auth/forgot-password');
+        $this->load->view('templates/auth_footer');
+
+    }
 }
